@@ -5,3 +5,9 @@ members = [
     "google_bigquery2"
 ]
 resolver = "2"
+
+[workspace.dependencies]
+anyhow = "1.0.93"
+serde = "^1.0"
+serde_json = "^1.0"
+tokio = { version = "^1", features = ["rt-multi-thread"] }
