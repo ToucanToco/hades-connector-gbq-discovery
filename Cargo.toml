@@ -1,0 +1,7 @@
+[workspace]
+members = [ 
+    "gcp-bigquery-client", 
+    "google-cloud-bigquery",
+    "google_bigquery2"
+]
+resolver = "2"

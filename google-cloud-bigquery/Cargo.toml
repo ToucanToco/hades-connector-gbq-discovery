@@ -1,0 +1,7 @@
+[package]
+name = "with-google-cloud-bigquery"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+google-cloud-bigquery = "0.14.0"
