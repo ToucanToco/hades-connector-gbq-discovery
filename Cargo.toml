@@ -7,7 +7,33 @@ members = [
 resolver = "2"
 
 [workspace.dependencies]
-anyhow = "1.0.93"
-serde = "^1.0"
-serde_json = "^1.0"
-tokio = { version = "^1", features = ["rt-multi-thread"] }
+anyhow = "^1.0.93"
+polars = { version = "0.41.3", features = [
+    "abs",
+    "async",
+    "aws",
+    "dtype-date",
+    "dtype-decimal",
+    "dtype-struct",
+    "ipc_streaming",
+    "json",
+    "lazy",
+    "offset_by",
+    "parquet",
+    "polars-io",
+    "regex",
+    "replace",
+    "streaming",
+    "strings",
+] }
+polars-arrow = { version = "0.41.3", features = [
+    "compute_cast",
+    "io_ipc_write_async",
+] }
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = { version = "1.0.133", features = ["preserve_order"] }
+tokio = { version = "1.41.1", features = [
+    "io-util",
+    "macros",
+    "rt-multi-thread",
+] }
