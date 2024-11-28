@@ -1,9 +1,14 @@
-use gcp_bigquery_client::model::{
-    query_request::QueryRequest, query_response::QueryResponse,
-    table_field_schema::TableFieldSchema,
+use gcp_bigquery_client::{
+    model::{
+        query_request::QueryRequest, query_response::QueryResponse,
+        table_field_schema::TableFieldSchema,
+    },
+    tabledata::ListQueryParameters,
 };
 
 const PROJECT_ID: &str = "biquery-integration-tests";
+const DATASET_ID: &str = "beers";
+const TABLE_ID: &str = "beers_tiny";
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -41,6 +46,25 @@ async fn main() -> anyhow::Result<()> {
             println!("{:?}", cell.value);
         }
     }
+
+    // Get arrow from table
+    let result = client
+        .tabledata()
+        .list(
+            PROJECT_ID,
+            DATASET_ID,
+            TABLE_ID,
+            ListQueryParameters {
+                start_index: None,
+                max_results: None,
+                page_token: None,
+                selected_fields: None,
+                format_options: None,
+            },
+        )
+        .await?;
+
+    println!("{result:?}");
 
     Ok(())
 }

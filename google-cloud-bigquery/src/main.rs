@@ -2,8 +2,10 @@ use google_cloud_bigquery::{
     client::{google_cloud_auth::credentials::CredentialsFile, Client, ClientConfig},
     http::{
         job::query::{QueryRequest, QueryResponse},
-        table::list::ListTablesRequest,
+        table::{list::ListTablesRequest, TableReference},
+        tabledata::list::FetchDataRequest,
     },
+    storage::row::Row,
 };
 
 #[tokio::main]
@@ -38,6 +40,36 @@ async fn main() -> anyhow::Result<()> {
         for cell in &row.f {
             println!("{:?}", cell.v);
         }
+    }
+
+    // Get arrow from table
+    let result = client
+        .tabledata()
+        .read(
+            &project_id,
+            "beers",
+            "beers_tiny",
+            &FetchDataRequest {
+                ..Default::default()
+            },
+        )
+        .await?;
+
+    println!("{:?}", result);
+
+    let mut result = client
+        .read_table::<Row>(
+            &TableReference {
+                project_id,
+                dataset_id: "beers".to_string(),
+                table_id: "beers_tiny".to_string(),
+            },
+            None,
+        )
+        .await?;
+
+    while let Some(_row) = result.next().await? {
+        println!("ROW");
     }
 
     Ok(())

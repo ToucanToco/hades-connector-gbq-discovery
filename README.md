@@ -10,6 +10,7 @@ Just a hardcoded auth + SELECT example + basic polars conversion on weaverbirdâ€
 # [gcp-bigquery-client](https://crates.io/crates/gcp-bigquery-client)
 
 # [google-cloud-bigquery](https://crates.io/crates/google-cloud-bigquery)
+- [Read table via arrow](https://docs.rs/google-cloud-bigquery/0.14.0/google_cloud_bigquery/client/struct.Client.html#method.read_table)
 
 # Pistes
 
