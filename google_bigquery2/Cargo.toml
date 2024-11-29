@@ -5,3 +5,8 @@ edition = "2021"
 
 [dependencies]
 google-bigquery2 = "5.0.3"
+
+anyhow = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }

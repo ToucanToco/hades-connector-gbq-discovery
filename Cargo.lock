@@ -2516,6 +2516,7 @@ version = "1.0.133"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c7fceb2473b9166b2294ef05efcb65a3db80803f0b03ef86a5fc88a2b85ee377"
 dependencies = [
+ "indexmap 2.6.0",
  "itoa",
  "memchr",
  "ryu",
@@ -3387,7 +3388,11 @@ dependencies = [
 name = "with_google_bigquery2"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "google-bigquery2",
+ "serde",
+ "serde_json",
+ "tokio",
 ]
 
 [[package]]
